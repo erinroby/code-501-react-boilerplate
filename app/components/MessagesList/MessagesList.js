@@ -26,7 +26,7 @@ class MessagesList extends React.Component {
   render () {
     if (this.state.messageList.length > 0) {
       return (
-        <ul>
+        <ul className='MessagesList'>
           {this.state.messageList.map((message, i) =>
             <MessageBox
               key={i}
