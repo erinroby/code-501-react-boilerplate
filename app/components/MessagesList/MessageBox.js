@@ -1,4 +1,5 @@
 import React from 'react'
+import format from 'date-fns/format'
 
 const MessageBox = ({ author, message, date }) =>
   <li className='MessageBox'>
@@ -7,7 +8,7 @@ const MessageBox = ({ author, message, date }) =>
       <h4>{author.name}</h4>
     </div>
     <div>
-      <p>{date}</p>
+      <p>{format(date, 'MMM D YYYY, h:mm a')}</p>
     </div>
     <div>
       <p>{message}</p>
