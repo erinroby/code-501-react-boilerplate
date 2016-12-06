@@ -23,8 +23,16 @@ class MessagesList extends React.Component {
         token: res.data.pageToken
       })
     })
-    .catch((res) => {
-      console.log(res)
+    .catch((error) => {
+      console.log(error)
+    })
+  }
+
+  deleteMessage (id) {
+    const oldMessages = this.state.messageList()
+    const newMessages = oldMessages.filter((o) => o.id !== id)
+    this.setState({
+      messageList: newMessages
     })
   }
 
@@ -37,12 +45,14 @@ class MessagesList extends React.Component {
       const sortedMessages = _.orderBy(this.state.messageList, (o) => o.updated, 'desc')
       return (
         <ul className='MessagesList'>
+          <button onClick={this.getMessages.bind(this)}>Get More Messages</button>
           {sortedMessages.map((message, i) =>
             <MessageBox
               key={i}
               author={message.author}
               message={message.content}
               date={message.updated}
+              id={message.id}
             />
           )}
         </ul>
