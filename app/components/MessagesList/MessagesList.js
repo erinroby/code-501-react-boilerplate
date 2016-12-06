@@ -52,7 +52,7 @@ class MessagesList extends React.Component {
               author={message.author}
               message={message.content}
               date={message.updated}
-              id={message.id}
+              onDelete={this.deleteMessage.bind(this, message.id)}
             />
           )}
         </ul>
